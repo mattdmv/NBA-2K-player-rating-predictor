@@ -2,3 +2,5 @@
 data_scraping
 columns.json
 2K20_ratings.csv
+.idea
+__pycache__
