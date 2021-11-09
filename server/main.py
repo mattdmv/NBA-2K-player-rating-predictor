@@ -1,4 +1,4 @@
-from fastapi import FastAPI, jsonify
+from fastapi import FastAPI, Form
 import uvicorn
 import utility
 
@@ -15,9 +15,8 @@ async def predict_player_rating():
     plus_minus = float(request.form['plus_minus'])
     gp = int(request.form['gp'])
 
-    response = jsonify({
-        'estimated_rating':utility.get_estimated_rating(pts, reb, ast, stl, blk, three_p, plus_minus, gp)})
-        response.headers.add('Access-Control-Allow-Origin', '*')
+    response = {'estimated_rating':utility.get_estimated_rating(pts, reb, ast, stl, blk, three_p, plus_minus, gp)}
+    response.headers.add('Access-Control-Allow-Origin', '*')
 
     return response
 
