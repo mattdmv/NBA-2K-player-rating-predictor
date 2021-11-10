@@ -7,7 +7,7 @@
 .header {
     min-height: 100vh;
     width: 100;
-    background-image: url("images/madison-square-garden-1.jpg");
+    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("images/madison-square-garden-1.jpg");
     background-position: center;
     background-size: cover;
     position: relative;
@@ -52,12 +52,12 @@ nav a {
 .nav-links ul li a:hover{
     border: 1px solid rgb(0, 68, 255);
     background: rgb(0, 68, 255);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .text-box{
     width: 90%;
-    color: #fff;
+    color: rgb(255, 255, 255);
     position: absolute;
     top: 55%;
     left: 50%;
@@ -95,7 +95,7 @@ nav a {
 .buttons:hover{
     border: 1px solid rgb(0, 68, 255);
     background: rgb(0, 68, 255);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 #player-name-form{
