@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA 2K player rating prediction</title>
+    <link rel="icon" type="image/x-icon" href="images/nba-data-app-logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +15,11 @@
 <body>
 <section class="header">
     <nav>
-        <a href="index.html"><img src="images/nba-logo.png" width="65" height="147"></a>
+        <a href="index.html"><img src="images/nba-data-app-logo-white.png" width="150" height="150"></a>
         <div class="nav-links" id="navLinks">
             <ul>
-                <li><a href="">Home</a></li>
                 <li><a href="">About the project</a></li>
-                <li><a href="">2K player classifier</a></li>
+                <li><a href="https://github.com/mattdmv/NBA-2K-player-rating-predictor">GitHub repo</a></li>
             </ul>
         </div>
     </nav>
@@ -30,8 +30,11 @@
     just need to search for a player and you are good to go. 
     </p>
     <!-- <a href="" class="search-btn">Search for a player</a> -->
-    <div>
-        <button id="search-button" onclick="onClickPlayerSearch()" type="button">Search for a player</button>
+    <div class="button-container">
+        <button class="buttons" id="search-button" onclick="onClickPlayerSearch()" type="button">Search for a player</button>
+    </div>
+    <div class="button-container">
+        <button class="buttons" id="compare-button" onclick="onClickPlayerSearch()" type="button">Compare players</button>
     </div>
     <form>
         <input type="text" id="player-name-form">

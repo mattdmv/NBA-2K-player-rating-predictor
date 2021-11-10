@@ -20,6 +20,10 @@ nav {
     align-items: center;
 }
 
+nav a {
+    padding: 20px 20px;
+}
+
 .nav-links{
     flex: 1;
     text-align: left;
@@ -45,10 +49,10 @@ nav {
     border-radius: 10px;
 }
 
-.nav-links ul li:hover{
-    font-size: 24px;
-    color: rgb(0, 68, 255);
-    transition: 0.5s;
+.nav-links ul li a:hover{
+    border: 1px solid rgb(0, 68, 255);
+    background: rgb(0, 68, 255);
+    transition: 1s;
 }
 
 .text-box{
@@ -71,7 +75,11 @@ nav {
     color: #fff;
 }
 
-#search-button{
+.button-container{
+    padding: 10px;
+}
+
+.buttons{
     display: inline-block;
     text-decoration: none;
     color: #fff;
@@ -84,7 +92,7 @@ nav {
     border-radius: 10px;
 }
 
-#search-button:hover{
+.buttons:hover{
     border: 1px solid rgb(0, 68, 255);
     background: rgb(0, 68, 255);
     transition: 1s;
