@@ -99,7 +99,7 @@ nav a {
 }
 
 #calculate-button{
-    display: none;
+    display: inline-block;
 }
 
 .input-form {
@@ -114,8 +114,12 @@ nav a {
     position: relative;
     cursor: pointer;
     border-radius: 10px;
-    display: none;
+    display: inline-block
     margin: 10px 0 40px;
+}
+
+.form-box{
+    padding: 10px;
 }
 
 nav .fa{
