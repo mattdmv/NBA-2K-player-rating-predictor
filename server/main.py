@@ -1,27 +1,36 @@
+# libraries imports
 from fastapi import FastAPI, Form
 import uvicorn
+from pydantic import BaseModel
+import pickle
 import utility
 
+# create the app object
 app = FastAPI()
 
+# load the model
+#pickle_in = open ('/artifacts/NBA2K_player_rating_prediction_model.pickle', 'rb')
+#model = pickle.load(pickle_in)
+
+# create class which describes player stats measurements
+class PlayerStats(BaseModel):
+    pts: float
+    reb: float
+    ast: float
+    stl: float
+    blk: float
+    three_p: float
+    plus_minus: float
+    gp: int
+
 @app.post('/predict_player_rating')
-async def predict_player_rating():
-    pts = float(request.form['pts'])
-    reb = float(request.form['reb'])
-    ast = float(request.form['ast'])
-    stl = float(request.form['stl'])
-    blk = float(request.form['blk'])
-    three_p = float(request.form['three_p'])
-    plus_minus = float(request.form['plus_minus'])
-    gp = int(request.form['gp'])
+async def predict_player_rating(player_name: str):
 
-    response = {'estimated_rating':utility.get_estimated_rating(pts, reb, ast, stl, blk, three_p, plus_minus, gp)}
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    response = utility.main_pipeline(player_name)
 
-    return response
+    return {'Predicted rating': response}
 
 if __name__=="__main__":
     print("Starting FastAPI Server for NBA2K player rating prediction!")
-    utility.load_saved_artifacts()
     uvicorn.run(app, host='localhost', port=8000)
 

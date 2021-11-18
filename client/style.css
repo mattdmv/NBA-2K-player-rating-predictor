@@ -98,8 +98,11 @@ nav a {
     transition: 0.5s;
 }
 
-#player-name-form{
-    display: inline-block;
+#calculate-button{
+    display: none;
+}
+
+.input-form {
     text-decoration: none;
     color: #fff;
     border: 1px solid;

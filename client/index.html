@@ -34,19 +34,34 @@
         <button class="buttons" id="search-button" onclick="onClickPlayerSearch()" type="button">Search for a player</button>
     </div>
     <div class="button-container">
-        <button class="buttons" id="compare-button" onclick="onClickPlayerSearch()" type="button">Compare players</button>
+        <button class="buttons" id="compare-button" onclick="onClickComparePlayer()" type="button">Compare players</button>
     </div>
     <form>
-        <input type="text" id="player-name-form">
+        <input type="text" class='input-form' id="player-name-form-1">
     </form>
-</div>
+    <form>
+        <input type="text" class='input-form' id="player-name-form-2">
+    </form>
+    <div class="button-container">
+        <button class="buttons" id="calculate-button" onclick="onClickCalculate()" type="button">Calculate</button>
+    </div>
 
 </section>
 
 <script>
     function onClickPlayerSearch(){
-        document.getElementById("player-name-form").style.display = "inline-block";
+        document.getElementById("player-name-form-1").style.display = "inline-block";
         document.getElementById("search-button").style.display = "none";
+        document.getElementById("compare-button").style.display = "none";
+        document.getElementById("calculate-button").style.display = "inline-block";
+    }
+
+    function onClickComparePlayer(){
+        document.getElementById("player-name-form-1").style.display = "inline-block";
+        document.getElementById("player-name-form-2").style.display = "inline-block";
+        document.getElementById("search-button").style.display = "none";
+        document.getElementById("compare-button").style.display = "none";
+        document.getElementById("calculate-button").style.display = "inline-block";
     }
 
 </script>

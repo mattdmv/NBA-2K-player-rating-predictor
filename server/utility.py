@@ -10,23 +10,11 @@ from nba_api.stats.endpoints import playergamelog
 __data_columns = None
 __model = None
 
-def get_estimated_rating(pts,reb,ast,stl,blk,three_p,plus_minus,gp):
-    
-    x = np.zeros(len(__data_columns))
-    x[0] = pts
-    x[1] = reb
-    x[2] = ast
-    x[3] = stl
-    x[4] = blk
-    x[5] = three_p
-    x[6] = plus_minus
-    x[7] = gp
-
-    return round(__model.predict([x])[0],2)
-
+def get_estimated_rating(player_stats_list):
+    return int(__model.predict([player_stats_list])[0])
 
 def load_saved_artifacts():
-    print("Start loading saved artifacts!")
+    print("Loading saved artifacts...")
     global  __data_columns
 
     with open("./artifacts/final_columns.json", "r") as f:
@@ -37,7 +25,7 @@ def load_saved_artifacts():
     if __model is None:
         with open('./artifacts/NBA2K_player_rating_prediction_model.pickle', 'rb') as f:
             __model = pickle.load(f)
-    print("Saved artifacts loaded sucessfully!")
+    print("Artifacts loaded sucessfully!")
 
 
 def get_data_columns():
@@ -50,31 +38,40 @@ def find_player_id(player_name):
     return player_id
 
 def get_player_plus_minus(player_id):
-    player_gamelog = playergamelog.PlayerGameLog(player_id = player_id, season = SeasonAll.default)
+    player_gamelog = playergamelog.PlayerGameLog(player_id = player_id, season = SeasonAll.default).get_data_frames()
     plus_minus = player_gamelog[0]['PLUS_MINUS'].mean()
 
     return plus_minus
 
 def fetch_player_stats(player_name):
-    player_stats_dict = {}
-
     player_id = find_player_id(player_name)
     
     player_stats = playercareerstats.PlayerCareerStats(player_id = player_id, per_mode36 = 'PerGame').get_data_frames()[0]
     player_stats_current_season = player_stats.iloc[-1]
     player_plus_minus_current_season = get_player_plus_minus(player_id)
 
-    player_stats_dict = {'pts': player_stats_current_season['PTS'],
-                        'reb': player_stats_current_season['REB'],
-                        'ast': player_stats_current_season['AST'],
-                        'stl': player_stats_current_season['STL'],
-                        'blk': player_stats_current_season['BLK'],
-                        'three_p': player_stats_current_season['FG3M'],
-                        'plus_minus': player_plus_minus_current_season,
-                        'gp': player_stats_current_season['GP']
-                        }
+    player_stats_list = [player_stats_current_season['PTS'], 
+    player_stats_current_season['REB'], 
+    player_stats_current_season['AST'],
+    player_stats_current_season['STL'],
+    player_stats_current_season['BLK'],
+    player_stats_current_season['FG3M'],
+    player_plus_minus_current_season,
+    player_stats_current_season['GP']]
 
-    return player_stats_dict
+    return player_stats_list
+
+def main_pipeline(player_name):
+    load_saved_artifacts()
+    #print("Fetching player's stats...")
+    player_stats = fetch_player_stats(player_name)
+    #print("Player's stats loaded!")
+    #print("Calculating player's rating in the next release of the NBA2K game...")
+    rating = get_estimated_rating(player_stats)
+    #print('Calculation done!')
+    #print('Estimated rating: ', rating)
+
+    return rating
 
 if __name__ == '__main__':
-    load_saved_artifacts()
+    main_pipeline('Kevin Durant')
