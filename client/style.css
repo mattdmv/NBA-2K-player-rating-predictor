@@ -11,7 +11,16 @@
     background-position: center;
     background-size: cover;
     position: relative;
-} 
+}
+
+h2 {
+    width: 90%;
+    padding: 10px 10px;
+    color: white;
+    position: relative;
+    right: -17.50%;
+    text-align: center;
+}
 
 nav {
     display: flex;
@@ -58,11 +67,22 @@ nav a {
 .text-box{
     width: 90%;
     color: rgb(255, 255, 255);
-    position: absolute;
+    position: relative;
     top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -20%);
+    text-justify: space-between;
     text-align: center;
+}
+
+#player-name-placeholder {
+    width: 50%;
+    float: left;
+}
+
+#predicted-rating-placeholder {
+    width: 30%;
+    float: left;
 }
 
 .text-box h1{
@@ -100,6 +120,15 @@ nav a {
 
 #calculate-button{
     display: inline-block;
+    position: absolute;
+    top: 40%;
+    left: 21.5%;
+}
+
+form {
+    position: absolute;
+    top: 30%;
+    left: 21.5%;
 }
 
 .input-form {
@@ -115,7 +144,6 @@ nav a {
     cursor: pointer;
     border-radius: 10px;
     display: inline-block
-    margin: 10px 0 40px;
 }
 
 .form-box{
@@ -124,4 +152,23 @@ nav a {
 
 nav .fa{
     display: none;
+}
+
+table{
+    position: absolute;
+    top: 65%;
+    left: 30%;
+}
+
+table th, td {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid;
+    padding: 5px 5px;
+    font-size: 20px;
+    background: transparent;
+    position: relative;
+    width: 50px;
+    height: 25px;
+    border-radius: 5px;
 }

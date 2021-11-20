@@ -23,12 +23,38 @@
             </ul>
         </div>
     </nav>
+<div>
+    <h2>Predicted rating</h2>
+</div>
 
 <div class="text-box">
-    <h1>NBA 2K player rating predictor</h1>
-    <p>Predicting NBA2K player ratings is now one of the easiest things in the world. You
-    just need to search for a player and you are good to go. 
-    </p>
+    <h1 class="text-box-child-1" id='player-name-placeholder'>Player</h1>
+    <h1 class="text-box-child-2" id='predicted-rating-placeholder'>::</h1>
+</div>
+<div>
+    <table class='stats-table'>
+        <tr>
+            <th>PTS</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>STL</th>
+            <th>BLK</th>
+            <th>3P</th>
+            <th>+/-</th>
+            <th>GP</th>
+        </tr>
+        <tr>
+            <td id='pts-placeholder'></td>
+            <td id='reb-placeholder'></td>
+            <td id='ast-placeholder'></td>
+            <td id='stl-placeholder'></td>
+            <td id='blk-placeholder'></td>
+            <td id='3p-placeholder'></td>
+            <td id='plus-minus-placeholder'></td>
+            <td id='gp-placeholder'></td>
+        </tr>
+    </table>
+</div>
     <!-- <a href="" class="search-btn">Search for a player</a> -->
     <form>
         <input type="text" class='input-form' id="player-name-form-1">
@@ -37,7 +63,7 @@
     <div class="button-container">
         <button class="buttons" id="calculate-button" onclick="onClickCalculate()" type="button">Calculate</button>
     </div>
-</div>
+
 </section>
 
 <script>
