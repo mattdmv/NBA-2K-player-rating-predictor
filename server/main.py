@@ -12,23 +12,12 @@ app = FastAPI()
 #pickle_in = open ('/artifacts/NBA2K_player_rating_prediction_model.pickle', 'rb')
 #model = pickle.load(pickle_in)
 
-# create class which describes player stats measurements
-class PlayerStats(BaseModel):
-    pts: float
-    reb: float
-    ast: float
-    stl: float
-    blk: float
-    three_p: float
-    plus_minus: float
-    gp: int
-
 @app.post('/predict_player_rating')
 async def predict_player_rating(player_name: str):
 
     response = utility.main_pipeline(player_name)
 
-    return {'Predicted rating': response}
+    return {'predicted_value':response}
 
 if __name__=="__main__":
     print("Starting FastAPI Server for NBA2K player rating prediction!")
