@@ -9,7 +9,8 @@ function onClickedCalculate() {
     $.post(url, {player_name: player.value}, function(data, status) {
         console.log(data.predicted_value);
         estRating.innerHTML = "<h1>" + data.predicted_value.toString() + "</h1>";
-        playerName.innerHTML = "<h1>" + player.value.toString() + "</h1>"
+        playerName.innerHTML = "<h1>" + player.value.toString() + "</h1>";
+        player.value = "";
         console.log(status);
     });
 }
