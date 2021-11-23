@@ -61,6 +61,14 @@ def fetch_player_stats(player_name):
 
     return player_stats_list
 
+def transform_player_stats(player_name):
+    player_stats = fetch_player_stats(player_name)
+    
+    for i in range (len(player_stats)):
+        player_stats[i]= str(player_stats[i])
+        
+    return player_stats
+
 def main_pipeline(player_name):
     load_saved_artifacts()
     #print("Fetching player's stats...")

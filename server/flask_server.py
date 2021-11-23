@@ -8,7 +8,8 @@ def predict_player_rating():
     player_name = request.form['player_name']
 
     response = jsonify({
-        'predicted_value': utility.main_pipeline(player_name)
+        'predicted_value': utility.main_pipeline(player_name), 
+        'player_stats': utility.transform_player_stats(player_name)
         })
 
     response.headers.add('Access-Control-Allow-Origin', '*')
