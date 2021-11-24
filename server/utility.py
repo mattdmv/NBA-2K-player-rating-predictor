@@ -39,7 +39,7 @@ def find_player_id(player_name):
 
 def get_player_plus_minus(player_id):
     player_gamelog = playergamelog.PlayerGameLog(player_id = player_id, season = SeasonAll.default).get_data_frames()
-    plus_minus = player_gamelog[0]['PLUS_MINUS'].mean()
+    plus_minus = round(player_gamelog[0]['PLUS_MINUS'].mean(), 2)
 
     return plus_minus
 
